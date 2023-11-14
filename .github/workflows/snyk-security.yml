@@ -4,7 +4,7 @@ on: push
 jobs:
   Pipeline-Job:
     # Configure Environment
-    name: 'Snyk Code Scan'
+    name: 'Snyk Code and Open Source Scans'
     runs-on: ubuntu-latest
     env: 
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
