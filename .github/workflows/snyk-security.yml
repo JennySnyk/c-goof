@@ -20,7 +20,13 @@ jobs:
          sudo npm install -g snyk
          snyk auth ${SNYK_TOKEN}
 
-    # Run Snyk Open Source
+    # Run Snyk Open Source 
+    - name: Run Snyk Open Source
+      run: |
+         snyk test --unmanaged 
+      continue-on-error: true
+
+    # Run Snyk Open Source JSON format
     - name: Run Snyk Open Source
       run: |
          snyk test --unmanaged --json
@@ -30,6 +36,11 @@ jobs:
     - name: Run Snyk Code
       run: |
          snyk code test
+      continue-on-error: true
+      
+    # Run Snyk Code SARIF Format
+    - name: Run Snyk Code
+      run: |
          snyk code test --sarif  > results.sarif
       continue-on-error: true
     - name: Upload SARIF file
